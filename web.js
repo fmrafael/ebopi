@@ -5,7 +5,7 @@ fs = require('fs'),
 MongoClient = require('mongodb').MongoClient,
 Server = require('mongodb').Server;
 
-var app = express();
+app = express();
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.set('port', process.env.PORT || 8080);
@@ -15,9 +15,10 @@ res.send(data);
 });
 
 
+http.createServer(app).listen(app.get('port'), function() { console.log("Listening on" + app.get('port'))});
 
 
+var mongoClient = new MongoClient(new Server('localhost', 27017, {'native_parser': true }));
+mongoClient.open(function(err, mongoClient) { var db1 = mongoClient.db("ebopi");
 
-var mongoclient = new MongoClient(new Server('localhost', 27017, {'native_parser': true } ));
-
-var db = MongoClient.db('Course');
+mongoClient.close();});
