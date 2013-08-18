@@ -2,8 +2,7 @@ var express = require('express'),
 http = require('http'),
 https = require('https'),
 fs = require('fs'),
-MongoClient = require('mongodb').MongoClient,
-Server = require('mongodb').Server;
+mongo = require('mongodb'),
 
 app = express();
 app.set('views', __dirname + '/views');
@@ -18,7 +17,16 @@ res.send(data);
 http.createServer(app).listen(app.get('port'), function() { console.log("Listening on" + app.get('port'))});
 
 
-var mongoClient = new MongoClient(new Server('localhost', 27017, {'native_parser': true }));
-mongoClient.open(function(err, mongoClient) { var db1 = mongoClient.db("ebopi");
 
-mongoClient.close();});
+var mongoUri = process.env.MONGOLAB_URI ||
+  process.env.MONGOHQ_URL ||
+'mongodb://localhost/mydb';
+
+
+
+mongo.Db.connect(mongoUri, function (err, db) {
+  db.collection('mydocs', function(er, collection) {
+    collection.insert({'mykey': 'myvalue'}, {safe: true}, function(er,rs) {
+    });
+  });
+});
