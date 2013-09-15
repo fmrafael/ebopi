@@ -54,7 +54,7 @@
   map.setZoom(15); 
     }
     marker.setIcon(/** @type {google.maps.Icon} */({
-      url: place.icon,
+     2B url: place.icon,
       size: new google.maps.Size(71, 71),
       origin: new google.maps.Point(0, 0),
       anchor: new google.maps.Point(17, 34),

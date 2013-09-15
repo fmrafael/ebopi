@@ -1,20 +1,15 @@
 {
   "name": "ebopi",
   "version": "0.0.1",
-  "description": "Solucoes Web, Qualidade Urbana, Qualidade Atendimento, Qualidade Vendas, Qualidade Exportacao",
-  "Main": "web.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "dependencies": {
-     "express": "~3.3.4",
-     "mongodb": " ", 
-     "async": " ",
-     "mongoose": " ",
- "googlemaps": " " 
-  },
-  "engines": {
-    "node": "0.10.12",
-    "npm": "1.2.30"
+    "express": "3.3.5",
+    "ejs": "*",
+    "stylus": "*",
+    "mongodb": "*",
+    "mongoose": "*"
   }
 }
