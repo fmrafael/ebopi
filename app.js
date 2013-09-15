@@ -36,7 +36,7 @@ app.get('/users', user.list);
 
 
 var db = Mongoose.createConnection('localhost', 'ebopi');
-var mayorfixSchema = require('.models/mayorfix.js').mayorfixSchema;
+var mayorfixSchema = require('./models/mayorfix.js').mayorfixSchema;
 var mayorfix = db.model('mayorfix', 'mayorfixSchema');
 
 http.createServer(app).listen(app.get('port'), function(){
