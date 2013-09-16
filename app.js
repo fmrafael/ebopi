@@ -10,6 +10,7 @@ var http = require('http');
 var path = require('path');
 var Mongoose = require('mongoose');
 
+
 var app = express();
 
 // all environments
@@ -37,7 +38,7 @@ app.get('/users', user.list);
 
 var db = Mongoose.createConnection('localhost', 'ebopi');
 var mayorfixSchema = require('./models/mayorfix.js').mayorfixSchema;
-var mayorfix = db.model('mayorfix', 'mayorfixSchema');
+var mayorfix = db.model('mayorfix', mayorfixSchema);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
